@@ -11,7 +11,7 @@ public class Point implements Comparable<Point> {
     public final int x, y;
 
     // compare points by slope
-    public final Comparator<Point> SLOPE_ORDER = null;
+    public final Comparator<Point> SLOPE_ORDER = null; //TODO: needs internal class declaration
 
     // create the point (x, y)
     public Point(int x, int y) {
@@ -33,7 +33,8 @@ public class Point implements Comparable<Point> {
 
     // slope between this point and that point
     public double slopeTo(Point that) {
-        return ((double)this.y-that.y)/(this.x-that.x);
+    		//TODO: Horizontal slope: 0, Vertical slope: pos infinity, Degenerate line: neg infinity
+        return ((double)that.y-this.y)/(that.x-this.x);
     }
 
     /**
@@ -41,8 +42,14 @@ public class Point implements Comparable<Point> {
      * y-coordinates and breaking ties by x-coordinates
      */
     public int compareTo(Point that) {
-    		//TODO: implement
-        return 0;
+        if(this.y < that.y) {
+        		return -1;
+        } else if(this.y == that.y) {
+        		if(this.x < that.x) {
+        			return -1;
+        		}
+        }
+        return 1;
     }
 
     // return string representation of this point
