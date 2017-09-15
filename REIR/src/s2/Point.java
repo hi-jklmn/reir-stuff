@@ -1,17 +1,22 @@
 package s2;
 
-import java.util.Comparator;
-
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.StdDraw;
+
+import java.util.Comparator;
 
 public class Point implements Comparable<Point> {
 
     public final int x, y;
 
     // compare points by slope
-    public final Comparator<Point> SLOPE_ORDER = null; //TODO: needs internal class declaration
+    public final Comparator<Point> SLOPE_ORDER = new Comparator<Point>() {
+        @Override
+        public int compare(Point a, Point b) {
+            return (int) Math.signum(Point.this.slopeTo(a) - Point.this.slopeTo(b));
+        }
+    };
 
     // create the point (x, y)
     public Point(int x, int y) {
@@ -33,7 +38,11 @@ public class Point implements Comparable<Point> {
 
     // slope between this point and that point
     public double slopeTo(Point that) {
-    		//TODO: Horizontal slope: 0, Vertical slope: pos infinity, Degenerate line: neg infinity
+        if (this.x == that.x) {
+            return this.y == that.y ? Double.NEGATIVE_INFINITY : Double.POSITIVE_INFINITY;
+        } else if (this.y == that.y) {
+            return 0;
+        }
         return ((double)that.y-this.y)/(that.x-this.x);
     }
 
@@ -42,14 +51,7 @@ public class Point implements Comparable<Point> {
      * y-coordinates and breaking ties by x-coordinates
      */
     public int compareTo(Point that) {
-        if(this.y < that.y) {
-        		return -1;
-        } else if(this.y == that.y) {
-        		if(this.x < that.x) {
-        			return -1;
-        		}
-        }
-        return 1;
+        return this.y < that.y || this.y == that.y && this.x < that.x ? -1 : 1;
     }
 
     // return string representation of this point
@@ -59,9 +61,7 @@ public class Point implements Comparable<Point> {
     }
 
     public static void main(String[] args) {
-        /*
-         * Do not modify
-         */
+        /* DO NOT MODIFY */
         In in = new In();
         Out out = new Out();
         int n = in.readInt();
