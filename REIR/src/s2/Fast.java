@@ -24,33 +24,32 @@ public class Fast {
 
             Arrays.sort(points, p.SLOPE_ORDER);
 
-//            int run = 0;
+//            int run = 1;
 //            double current = p.slopeTo(points[0]);
 //            for (int i = 1; i < points.length; i++) {
 //                if (current == p.slopeTo(points[i])) {
 //                    run++;
-//                } else {
-//                    current = p.slopeTo(points[i]);
-//                    if (run > 0) {
-//                        output += p.toString();
-//                        for (int j = i-run; j < i; j++) {
-//                            output += " -> ";
-//                            output += points[j].toString();
-//                        }
-//                        output += "\n";
+//                    if (i + 1 != points.length) {
+//                        continue;
 //                    }
-//                    run = 0;
 //                }
+//                current = p.slopeTo(points[i]);
+//                if (run > 2) {
+//                    output += p.toString();
+//                    for (int j = i - run; j < i; j++) {
+//                        output += " -> ";
+//                        output += points[j].toString();
+//                    }
+//                    output += "\n";
+//                }
+//                run = 1;
 //            }
 
             for (int i = 2; i < points.length; i++) {
                 if (p.slopeTo(points[i - 2]) == p.slopeTo(points[i - 1]) &&
                         p.slopeTo(points[i - 1]) == p.slopeTo(points[i])) {
-                    output += (p.toString() + " -> ");
-                    output += (points[i - 2].toString() + " -> ");
-                    output += (points[i - 1].toString() + " -> ");
-                    output += (points[i].toString());
-                    int j = i + 1;
+                    output += p.toString();
+                    int j = i - 2;
                     while (j < points.length && p.slopeTo(points[j]) == p.slopeTo(points[i])) {
                         output += (" -> " + points[j].toString());
                         j++;
