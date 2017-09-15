@@ -2,7 +2,6 @@ package s2;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.Stopwatch;
 
 import java.util.Arrays;
 
@@ -17,7 +16,6 @@ public class Fast {
             points[i] = new Point(x, y);
         }
         // Process stuff
-        Stopwatch timer = new Stopwatch();
         while (points.length > 3) {
             Arrays.sort(points);
             Point p = points[0];
@@ -39,6 +37,5 @@ public class Fast {
                 }
             }
         }
-        StdOut.println(timer.elapsedTime());
     }
 }

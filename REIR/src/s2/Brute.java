@@ -1,10 +1,7 @@
 package s2;
 
 import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.Stopwatch;
-import javafx.scene.paint.Stop;
 
 import java.util.Arrays;
 
@@ -21,7 +18,6 @@ public class Brute {
         }
         // Process stuff
 
-        Stopwatch timer = new Stopwatch();
         Arrays.sort(points);
         for (int i = 0; i < n - 3; i++) {
             for (int j = i + 1; j < n - 2; j++) {
@@ -40,6 +36,5 @@ public class Brute {
                 }
             }
         }
-        StdOut.println(timer.elapsedTime());
     }
 }
