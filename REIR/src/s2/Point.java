@@ -1,10 +1,10 @@
 package s2;
 
-import java.util.Comparator;
-
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.StdDraw;
+
+import java.util.Comparator;
 
 public class Point implements Comparable<Point> {
 
@@ -33,7 +33,11 @@ public class Point implements Comparable<Point> {
 
     // slope between this point and that point
     public double slopeTo(Point that) {
-    		//TODO: Horizontal slope: 0, Vertical slope: pos infinity, Degenerate line: neg infinity
+        if (this.x == that.x) {
+            return this.y == that.y ? Double.NEGATIVE_INFINITY : Double.POSITIVE_INFINITY;
+        } else if (this.y == that.y) {
+            return 0;
+        }
         return ((double)that.y-this.y)/(that.x-this.x);
     }
 
@@ -42,14 +46,7 @@ public class Point implements Comparable<Point> {
      * y-coordinates and breaking ties by x-coordinates
      */
     public int compareTo(Point that) {
-        if(this.y < that.y) {
-        		return -1;
-        } else if(this.y == that.y) {
-        		if(this.x < that.x) {
-        			return -1;
-        		}
-        }
-        return 1;
+        return this.y < that.y || this.y == that.y && this.x < that.x ? -1 : 1;
     }
 
     // return string representation of this point
@@ -59,9 +56,33 @@ public class Point implements Comparable<Point> {
     }
 
     public static void main(String[] args) {
+        //TODO: Remove actual tests before submitting
+        //Tests basic "boundary cases"
+        Point[] points = new Point[7];
+        points[0] = new Point(0, 0);
+        points[1] = new Point(0, 1);
+        points[2] = new Point(1, 1);
+        points[3] = new Point(1, 0);
+        points[4] = new Point(0, 0);
+        points[5] = new Point(0, 0);
+        points[6] = new Point(1, 1);
+        Out out = new Out();
+        out.printf("Testing slopeTo method...\n");
+        for (int i = 1; i < points.length; i++) {
+            out.println(points[i].slopeTo(points[i - 1]));
+        }
+        out.printf("Testing compareTo method...\n");
+        for (int i = 1; i < points.length; i++) {
+            out.println(points[i].compareTo(points[i - 1]));
+        }
+        out.printf("Testing SLOPE_ORDER comparator...\n");
+        for (int i = 2; i < points.length; i++) {
+            out.println(points[i].SLOPE_ORDER.compare(points[i - 1],
+                    points[i - 2]));
+        }
+        //TODO: Uncomment the following section
+        /* DO NOT MODIFY */
         /*
-         * Do not modify
-         */
         In in = new In();
         Out out = new Out();
         int n = in.readInt();
@@ -83,5 +104,6 @@ public class Point implements Comparable<Point> {
             out.println(points[i].SLOPE_ORDER.compare(points[i - 1],
                     points[i - 2]));
         }
+        */
     }
 }
