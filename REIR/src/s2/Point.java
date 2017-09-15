@@ -11,7 +11,12 @@ public class Point implements Comparable<Point> {
     public final int x, y;
 
     // compare points by slope
-    public final Comparator<Point> SLOPE_ORDER = null; //TODO: needs internal class declaration
+    public final Comparator<Point> SLOPE_ORDER = new Comparator<Point>() {
+        @Override
+        public int compare(Point a, Point b) {
+            return (int) Math.signum(Point.this.slopeTo(a) - Point.this.slopeTo(b));
+        }
+    };
 
     // create the point (x, y)
     public Point(int x, int y) {
@@ -56,33 +61,7 @@ public class Point implements Comparable<Point> {
     }
 
     public static void main(String[] args) {
-        //TODO: Remove actual tests before submitting
-        //Tests basic "boundary cases"
-        Point[] points = new Point[7];
-        points[0] = new Point(0, 0);
-        points[1] = new Point(0, 1);
-        points[2] = new Point(1, 1);
-        points[3] = new Point(1, 0);
-        points[4] = new Point(0, 0);
-        points[5] = new Point(0, 0);
-        points[6] = new Point(1, 1);
-        Out out = new Out();
-        out.printf("Testing slopeTo method...\n");
-        for (int i = 1; i < points.length; i++) {
-            out.println(points[i].slopeTo(points[i - 1]));
-        }
-        out.printf("Testing compareTo method...\n");
-        for (int i = 1; i < points.length; i++) {
-            out.println(points[i].compareTo(points[i - 1]));
-        }
-        out.printf("Testing SLOPE_ORDER comparator...\n");
-        for (int i = 2; i < points.length; i++) {
-            out.println(points[i].SLOPE_ORDER.compare(points[i - 1],
-                    points[i - 2]));
-        }
-        //TODO: Uncomment the following section
         /* DO NOT MODIFY */
-        /*
         In in = new In();
         Out out = new Out();
         int n = in.readInt();
@@ -104,6 +83,5 @@ public class Point implements Comparable<Point> {
             out.println(points[i].SLOPE_ORDER.compare(points[i - 1],
                     points[i - 2]));
         }
-        */
     }
 }
