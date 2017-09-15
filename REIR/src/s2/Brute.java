@@ -3,6 +3,8 @@ package s2;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.Stopwatch;
+import javafx.scene.paint.Stop;
 
 import java.util.Arrays;
 
@@ -11,16 +13,16 @@ public class Brute {
     public static void main(String[] args) {
         // Input handling
         In in = new In();
-        Out out = new Out();
         int n = in.readInt();
         Point[] points = new Point[n];
         for (int i = 0; i < n; i++) {
             int x = in.readInt(), y = in.readInt();
             points[i] = new Point(x, y);
         }
-        Arrays.sort(points);
         // Process stuff
 
+        Stopwatch timer = new Stopwatch();
+        Arrays.sort(points);
         for (int i = 0; i < n - 3; i++) {
             for (int j = i + 1; j < n - 2; j++) {
                 for (int k = j + 1; k < n - 1; k++) {
@@ -38,5 +40,6 @@ public class Brute {
                 }
             }
         }
+        StdOut.println(timer.elapsedTime());
     }
 }

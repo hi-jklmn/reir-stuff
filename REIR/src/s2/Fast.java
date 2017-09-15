@@ -2,6 +2,7 @@ package s2;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.Stopwatch;
 
 import java.util.Arrays;
 
@@ -16,7 +17,7 @@ public class Fast {
             points[i] = new Point(x, y);
         }
         // Process stuff
-        String output = "";
+        Stopwatch timer = new Stopwatch();
         while (points.length > 3) {
             Arrays.sort(points);
             Point p = points[0];
@@ -24,41 +25,20 @@ public class Fast {
 
             Arrays.sort(points, p.SLOPE_ORDER);
 
-//            int run = 1;
-//            double current = p.slopeTo(points[0]);
-//            for (int i = 1; i < points.length; i++) {
-//                if (current == p.slopeTo(points[i])) {
-//                    run++;
-//                    if (i + 1 != points.length) {
-//                        continue;
-//                    }
-//                }
-//                current = p.slopeTo(points[i]);
-//                if (run > 2) {
-//                    output += p.toString();
-//                    for (int j = i - run; j < i; j++) {
-//                        output += " -> ";
-//                        output += points[j].toString();
-//                    }
-//                    output += "\n";
-//                }
-//                run = 1;
-//            }
-
             for (int i = 2; i < points.length; i++) {
                 if (p.slopeTo(points[i - 2]) == p.slopeTo(points[i - 1]) &&
                         p.slopeTo(points[i - 1]) == p.slopeTo(points[i])) {
-                    output += p.toString();
+                    StdOut.print(p.toString());
                     int j = i - 2;
                     while (j < points.length && p.slopeTo(points[j]) == p.slopeTo(points[i])) {
-                        output += (" -> " + points[j].toString());
+                        StdOut.print(" -> " + points[j].toString());
                         j++;
                     }
                     i = j - 1;
-                    output += "\n";
+                    StdOut.println();
                 }
             }
         }
-        StdOut.print(output);
+        StdOut.println(timer.elapsedTime());
     }
 }
