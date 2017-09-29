@@ -27,6 +27,8 @@ public class RangeSearchVisualizer {
 
         StdDraw.show(0);
 
+        StdDraw.setCanvasSize(1024,1024);
+
         // initialize the data structures with N points from standard input
         PointSET brute = new PointSET();
         KdTree kdtree = new KdTree();

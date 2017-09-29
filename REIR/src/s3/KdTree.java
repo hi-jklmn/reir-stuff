@@ -96,7 +96,7 @@ public class KdTree {
 
     // all points in the set that are inside the rectangle
     public Iterable<Point2D> range(RectHV rect) {
-        Bag<Point2D> bag = new Bag<>();
+        Bag<Point2D> bag = new Bag<Point2D>();
         range(root, rect, bag, false);
         return bag;
     }
@@ -105,13 +105,13 @@ public class KdTree {
         if (n == null) {
             return;
         }
-        if ((vertical && n.p.y() < rect.ymin()) || (!vertical && n.p.x() < rect.xmin())) {
+        if ((vertical && n.p.y() > rect.ymin()) || (!vertical && n.p.x() > rect.xmin())) {
             range(n.ld, rect, bag, !vertical);
         }
         if (rect.contains(n.p)) {
             bag.add(n.p);
         }
-        if ((vertical && n.p.y() > rect.ymax()) || (!vertical && n.p.x() > rect.xmax())) {
+        if ((vertical && n.p.y() < rect.ymax()) || (!vertical && n.p.x() < rect.xmax())) {
             range(n.ru, rect, bag, !vertical);
         }
     }
@@ -124,9 +124,9 @@ public class KdTree {
     private Point2D nearest(Node n, Point2D p, boolean vertical) {
         Node next;
         if (vertical) {
-            next = p.y() > n.p.y() ? n.ld : n.ru;
+            next = p.y() < n.p.y() ? n.ld : n.ru;
         } else {
-            next = p.x() > n.p.x() ? n.ld : n.ru;
+            next = p.x() < n.p.x() ? n.ld : n.ru;
         }
         if (next == null || p == n.p) {
             return n.p;
