@@ -7,13 +7,13 @@ import edu.princeton.cs.algs4.*;
 public class KdTree {
     private static class Node {
         private Point2D p;
-        private Node lu;
-        private Node rd;
+        private Node ld;
+        private Node ru;
 
         public Node(Point2D pnt) {
             p = pnt;
-            lu = null;
-            rd = null;
+            ld = null;
+            ru = null;
         }
     }
 
@@ -51,27 +51,27 @@ public class KdTree {
             return;
         }
 
-        boolean left = true;
+        boolean leftdown = true;
 
         if(vertical && n.p.y() > p.y()) {
-            left = false;
+            leftdown = false;
         } else if(!vertical && n.p.x() > p.x()) {
-            left = false;
+            leftdown = false;
         }
 
-        if(left) {
-            if(n.lu == null) {
+        if(leftdown) {
+            if(n.ld == null) {
                 size++;
-                n.lu = new Node(p);
+                n.ld = new Node(p);
             } else {
-                insert(n.lu, p, !vertical);
+                insert(n.ld, p, !vertical);
             }
         } else {
-            if(n.rd == null) {
+            if(n.ru == null) {
                 size++;
-                n.rd = new Node(p);
+                n.ru = new Node(p);
             } else {
-                insert(n.rd, p, !vertical);
+                insert(n.ru, p, !vertical);
             }
         }
     }
@@ -88,17 +88,16 @@ public class KdTree {
 
     private void draw(Node n) {
         if(n != null) {
-            draw(n.lu);
-            StdDraw.setPenRadius(0.05);
+            draw(n.ld);
             StdDraw.point(n.p.x(), n.p.y());
-            draw(n.rd);
+            draw(n.ru);
         }
     }
 
     // all points in the set that are inside the rectangle
     public Iterable<Point2D> range(RectHV rect) {
         Bag<Point2D> bag = new Bag<>();
-        range(root, rect, bag, true);
+        range(root, rect, bag, false);
         return bag;
     }
 
@@ -106,20 +105,28 @@ public class KdTree {
         if (n == null) {
             return;
         }
-        range(n.lu, rect, bag, !vertical);
+        if ((vertical && n.p.y() < rect.ymin()) || (!vertical && n.p.x() < rect.xmin())) {
+            range(n.ld, rect, bag, !vertical);
+        }
+        if (rect.contains(n.p)) {
+            bag.add(n.p);
+        }
+        if ((vertical && n.p.y() > rect.ymax()) || (!vertical && n.p.x() > rect.xmax())) {
+            range(n.ru, rect, bag, !vertical);
+        }
     }
 
     // a nearest neighbor in the set to p; null if set is empty
     public Point2D nearest(Point2D p) {
-        return isEmpty() ? null : nearest(root, p, true);
+        return isEmpty() ? null : nearest(root, p, false);
     }
 
     private Point2D nearest(Node n, Point2D p, boolean vertical) {
         Node next;
         if (vertical) {
-            next = p.y() > n.p.y() ? n.lu : n.rd;
+            next = p.y() > n.p.y() ? n.ld : n.ru;
         } else {
-            next = p.x() > n.p.x() ? n.lu : n.rd;
+            next = p.x() > n.p.x() ? n.ld : n.ru;
         }
         if (next == null || p == n.p) {
             return n.p;
