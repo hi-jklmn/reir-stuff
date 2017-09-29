@@ -51,7 +51,7 @@ public class Point implements Comparable<Point> {
      * y-coordinates and breaking ties by x-coordinates
      */
     public int compareTo(Point that) {
-        return this.y < that.y || this.y == that.y && this.x < that.x ? -1 : 1;
+        return (this.y < that.y || (this.y == that.y && this.x < that.x)) ? -1 : 1;
     }
 
     // return string representation of this point
