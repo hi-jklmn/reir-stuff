@@ -11,13 +11,10 @@ package s3;
  *
  *************************************************************************/
 
-import java.util.Arrays;
-import java.util.Iterator;
-
 import edu.princeton.cs.algs4.*;
-import sun.awt.SunToolkit;
 
-import javax.swing.*;
+import java.util.Arrays;
+
 
 public class PointSET {
 

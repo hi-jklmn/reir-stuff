@@ -89,6 +89,7 @@ public class KdTree {
     private void draw(Node n) {
         if(n != null) {
             draw(n.lu);
+            StdDraw.setPenRadius(0.05);
             StdDraw.point(n.p.x(), n.p.y());
             draw(n.rd);
         }
