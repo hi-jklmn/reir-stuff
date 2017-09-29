@@ -1,6 +1,4 @@
 package s3;
-/*************************************************************************
- *************************************************************************/
 
 import java.util.Arrays;
 
@@ -44,22 +42,37 @@ public class KdTree {
             size++;
             root = new Node(p);
         } else {
-            insert(root, p, true);
+            insert(root, p, false);
         }
     }
 
     private void insert(Node n, Point2D p, boolean vertical) {
-        if (n.p == p) {
+        if(n.p == p) {
             return;
         }
-        Node next;
-        if (vertical) {
-            next = p.y() > n.p.y() ? n.lu : n.rd;
-        } else {
-            next = p.x() > n.p.x() ? n.lu : n.rd;
+
+        boolean left = true;
+
+        if(vertical && n.p.y() > p.y()) {
+            left = false;
+        } else if(!vertical && n.p.x() > p.x()) {
+            left = false;
         }
-        if (n.lu == null) {
-            n.lu = new Node(p);
+
+        if(left) {
+            if(n.lu == null) {
+                size++;
+                n.lu = new Node(p);
+            } else {
+                insert(n.lu, p, !vertical);
+            }
+        } else {
+            if(n.rd == null) {
+                size++;
+                n.rd = new Node(p);
+            } else {
+                insert(n.rd, p, !vertical);
+            }
         }
     }
 
@@ -74,9 +87,7 @@ public class KdTree {
     }
 
     private void draw(Node n) {
-        if (n == null) {
-            return;
-        } else {
+        if(n != null) {
             draw(n.lu);
             StdDraw.point(n.p.x(), n.p.y());
             draw(n.rd);
