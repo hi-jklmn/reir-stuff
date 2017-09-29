@@ -1,4 +1,5 @@
-******************************************************************************
+package s3;
+/******************************************************************************
  *  Compilation:  javac KdTreeVisualizer.java
  *  Execution:    java KdTreeVisualizer
  *  Dependencies: KdTree.java

@@ -7,6 +7,9 @@
  *
  ******************************************************************************/
 
+import edu.princeton.cs.algs4.Point2D;
+import edu.princeton.cs.algs4.StdDraw;
+
 /**
  *  The <tt>RectHV</tt> class is an immutable data type to encapsulate a
  *  two-dimensional axis-aligned rectagle with real-value coordinates.
