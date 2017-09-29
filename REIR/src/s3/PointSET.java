@@ -12,49 +12,66 @@ package s3;
  *************************************************************************/
 
 import java.util.Arrays;
+import java.util.Iterator;
 
-import edu.princeton.cs.algs4.Point2D;
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.Out;
-import edu.princeton.cs.algs4.RectHV;
+import edu.princeton.cs.algs4.*;
+import sun.awt.SunToolkit;
+
+import javax.swing.*;
 
 public class PointSET {
+
+    private SET<Point2D> set;
     // construct an empty set of points
     public PointSET() {
-
+        set = new SET<Point2D>();
     }
 
     // is the set empty?
-    public boolean isEmpty() {
-        return false;
-    }
+    public boolean isEmpty() { return set.isEmpty(); }
 
     // number of points in the set
     public int size() {
-        return 0;
+        return set.size();
     }
 
     // add the point p to the set (if it is not already in the set)
     public void insert(Point2D p) {
+        set.add(p);
     }
 
     // does the set contain the point p?
     public boolean contains(Point2D p) {
-        return false;
+        return set.contains(p);
     }
 
     // draw all of the points to standard draw
     public void draw() {
+        for (Point2D p : set) {
+            StdDraw.point(p.x(), p.y());
+        }
     }
 
     // all points in the set that are inside the rectangle
     public Iterable<Point2D> range(RectHV rect) {
-        return null;
+        Bag<Point2D> output = new Bag<Point2D>();
+        for (Point2D p : set) {
+            if (rect.contains(p)) {
+                output.add(p);
+            }
+        }
+        return output;
     }
 
     // a nearest neighbor in the set to p; null if set is empty
     public Point2D nearest(Point2D p) {
-        return p;
+        Point2D point = null;
+        for (Point2D bro : set) {
+            if (bro.distanceSquaredTo(p) < point.distanceSquaredTo(p)) {
+                point = bro;
+            }
+        }
+        return point;
     }
 
     public static void main(String[] args) {

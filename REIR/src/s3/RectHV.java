@@ -1,3 +1,4 @@
+package s3;
 /******************************************************************************
  *  Compilation:  javac RectHV.java
  *  Execution:    none
