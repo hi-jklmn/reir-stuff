@@ -4,47 +4,117 @@ package s3;
 
 import java.util.Arrays;
 
-import edu.princeton.cs.algs4.Point2D;
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.Out;
+import edu.princeton.cs.algs4.*;
 
 public class KdTree {
+    private static class Node {
+        private Point2D p;
+        private Node lu;
+        private Node rd;
+
+        public Node(Point2D pnt) {
+            p = pnt;
+            lu = null;
+            rd = null;
+        }
+    }
+
+    private Node root;
+    private int size;
+
     // construct an empty set of points
     public KdTree() {
+        root = null;
+        size = 0;
     }
 
     // is the set empty?
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     // number of points in the set
     public int size() {
-        return 0;
+        return size;
     }
 
     // add the point p to the set (if it is not already in the set)
     public void insert(Point2D p) {
-    };
+        if (isEmpty()) {
+            size++;
+            root = new Node(p);
+        } else {
+            insert(root, p, true);
+        }
+    }
+
+    private void insert(Node n, Point2D p, boolean vertical) {
+        if (n.p == p) {
+            return;
+        }
+        Node next;
+        if (vertical) {
+            next = p.y() > n.p.y() ? n.lu : n.rd;
+        } else {
+            next = p.x() > n.p.x() ? n.lu : n.rd;
+        }
+        if (n.lu == null) {
+            n.lu = new Node(p);
+        }
+    }
 
     // does the set contain the point p?
     public boolean contains(Point2D p) {
-        return false;
+        return p == nearest(p);
     }
 
     // draw all of the points to standard draw
     public void draw() {
+        draw(root);
+    }
 
+    private void draw(Node n) {
+        if (n == null) {
+            return;
+        } else {
+            draw(n.lu);
+            StdDraw.point(n.p.x(), n.p.y());
+            draw(n.rd);
+        }
     }
 
     // all points in the set that are inside the rectangle
     public Iterable<Point2D> range(RectHV rect) {
-        return null;
+        Bag<Point2D> bag = new Bag<>();
+        range(root, rect, bag, true);
+        return bag;
+    }
+
+    private void range(Node n, RectHV rect, Bag<Point2D> bag, boolean vertical) {
+        if (n == null) {
+            return;
+        }
+        range(n.lu, rect, bag, !vertical);
     }
 
     // a nearest neighbor in the set to p; null if set is empty
     public Point2D nearest(Point2D p) {
-        return p;
+        return isEmpty() ? null : nearest(root, p, true);
+    }
+
+    private Point2D nearest(Node n, Point2D p, boolean vertical) {
+        Node next;
+        if (vertical) {
+            next = p.y() > n.p.y() ? n.lu : n.rd;
+        } else {
+            next = p.x() > n.p.x() ? n.lu : n.rd;
+        }
+        if (next == null || p == n.p) {
+            return n.p;
+        } else {
+            Point2D inner = nearest(next, p, !vertical);
+            return p.distanceSquaredTo(n.p) < p.distanceSquaredTo(inner) ? n.p : inner;
+        }
     }
 
     /*******************************************************************************

@@ -65,7 +65,7 @@ public class PointSET {
 
     // a nearest neighbor in the set to p; null if set is empty
     public Point2D nearest(Point2D p) {
-        Point2D point = null;
+        Point2D point = set.max();
         for (Point2D bro : set) {
             if (bro.distanceSquaredTo(p) < point.distanceSquaredTo(p)) {
                 point = bro;
