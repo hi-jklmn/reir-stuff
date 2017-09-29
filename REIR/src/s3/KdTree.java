@@ -51,27 +51,19 @@ public class KdTree {
             return;
         }
 
-        boolean leftdown = true;
-
-        if(vertical && n.p.y() > p.y()) {
-            leftdown = false;
-        } else if(!vertical && n.p.x() > p.x()) {
-            leftdown = false;
-        }
-
-        if(leftdown) {
-            if(n.ld == null) {
-                size++;
-                n.ld = new Node(p);
-            } else {
-                insert(n.ld, p, !vertical);
-            }
-        } else {
+        if((vertical && n.p.y() < p.y()) || (!vertical && n.p.x() < p.x())) {
             if(n.ru == null) {
                 size++;
                 n.ru = new Node(p);
             } else {
                 insert(n.ru, p, !vertical);
+            }
+        } else {
+            if(n.ld == null) {
+                size++;
+                n.ld = new Node(p);
+            } else {
+                insert(n.ld, p, !vertical);
             }
         }
     }
