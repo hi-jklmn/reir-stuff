@@ -46,24 +46,28 @@ public class KdTree {
         }
     }
 
+    private boolean strictly_less(Node n, Point2D p, boolean vertical) {
+        return (vertical && p.y() < n.p.y()) || (!vertical && p.x() < n.p.x());
+    }
+
     private void insert(Node n, Point2D p, boolean vertical) {
         if(n.p == p) {
             return;
         }
 
-        if((vertical && n.p.y() < p.y()) || (!vertical && n.p.x() < p.x())) {
-            if(n.ru == null) {
-                size++;
-                n.ru = new Node(p);
-            } else {
-                insert(n.ru, p, !vertical);
-            }
-        } else {
+        if(strictly_less(n, p, vertical)) {
             if(n.ld == null) {
                 size++;
                 n.ld = new Node(p);
             } else {
                 insert(n.ld, p, !vertical);
+            }
+        } else {
+            if(n.ru == null) {
+                size++;
+                n.ru = new Node(p);
+            } else {
+                insert(n.ru, p, !vertical);
             }
         }
     }
@@ -118,7 +122,7 @@ public class KdTree {
         Node next = n.ru;
         boolean leftdown = false;
 
-        if((vertical && p.y() < n.p.y()) || (!vertical && p.x() < n.p.x())) {
+        if(strictly_less(n, p, vertical)) {
             next = n.ld;
             leftdown = true;
         }
@@ -129,14 +133,15 @@ public class KdTree {
             out = nearest(next, p, !vertical);
         }
 
-        if(out == n.p || p.distanceSquaredTo(n.p) < p.distanceSquaredTo(out)) {
+        if(p.distanceSquaredTo(n.p) <= p.distanceSquaredTo(out)) {
             next = leftdown ? n.ru : n.ld;
             if(next != null) {
                 out = nearest(next, p, !vertical);
+                return p.distanceSquaredTo(n.p) < p.distanceSquaredTo(out) ? n.p : out;
             }
         }
 
-        return out == n.p || p.distanceSquaredTo(n.p) < p.distanceSquaredTo(out) ? n.p : out;
+        return out;
     }
 
     /*******************************************************************************
