@@ -51,8 +51,8 @@ public class KdTree {
     }
 
     private void insert(Node n, Point2D p, boolean vertical) {
-        if (n.p.equals(p)) {
-            return;
+        if (p.equals(n.p)) {
+            return; //we beat computer science
         }
 
         if(n.isGreaterThan(p, vertical)) {
@@ -74,7 +74,19 @@ public class KdTree {
 
     // does the set contain the point p?
     public boolean contains(Point2D p) {
-        return p.equals(nearest(p));
+        Node n = root;
+        boolean vertical = false;
+
+        while(n != null) {
+            if(p.equals(n.p)) {
+                return true;
+            }
+
+            n = n.isGreaterThan(p, vertical) ? n.ld : n.ru;
+            vertical = !vertical;
+        }
+
+        return false;
     }
 
     // draw all of the points to standard draw
@@ -90,10 +102,14 @@ public class KdTree {
         }
         StdDraw.setPenRadius();
         if (vertical) {
+            draw(n.ld, new RectHV(rect.xmin(), rect.ymin(), rect.xmax(), n.p.y()), !vertical);
+            draw(n.ru, new RectHV(rect.xmin(), n.p.y(), rect.xmax(), rect.ymax()), !vertical);
             // draw a horizontal line for the node
             StdDraw.setPenColor(StdDraw.BLUE);
             StdDraw.line(rect.xmin(), n.p.y(), rect.xmax(), n.p.y());
         } else {
+            draw(n.ld, new RectHV(rect.xmin(), rect.ymin(), n.p.x(), rect.ymax()), !vertical);
+            draw(n.ru, new RectHV(n.p.x(), rect.ymin(), rect.xmax(), rect.ymax()), !vertical);
             // draw a vertical line for the node
             StdDraw.setPenColor(StdDraw.RED);
             StdDraw.line(n.p.x(), rect.ymin(), n.p.x(), rect.ymax());
@@ -101,13 +117,6 @@ public class KdTree {
         StdDraw.setPenRadius(.01);
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.point(n.p.x(), n.p.y());
-        if (vertical) {
-            draw(n.ld, new RectHV(rect.xmin(), rect.ymin(), rect.xmax(), n.p.y()), !vertical);
-            draw(n.ru, new RectHV(rect.xmin(), n.p.y(), rect.xmax(), rect.ymax()), !vertical);
-        } else {
-            draw(n.ld, new RectHV(rect.xmin(), rect.ymin(), n.p.x(), rect.ymax()), !vertical);
-            draw(n.ru, new RectHV(n.p.x(), rect.ymin(), rect.xmax(), rect.ymax()), !vertical);
-        }
     }
 
     // all points in the set that are inside the rectangle
