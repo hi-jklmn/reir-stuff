@@ -146,32 +146,51 @@ public class KdTree {
     }
 
     private Point2D nearest(Node n, Point2D p, boolean vertical) {
-        if (n == null) {
+
+        if(n == null) {
             return new Point2D(Double.MAX_VALUE, Double.MAX_VALUE);
         }
-        boolean leftdown = n.isGreaterThan(p, vertical);
-        Point2D split;
-        if (vertical) {
-            split = new Point2D(p.x(), n.p.y());
-        } else {
-            split = new Point2D(n.p.x(), p.y());
+        if(p.equals(n.p) || n.ld == null && n.ru == null) {
+            return n.p;
         }
-        Point2D bestChild;
-        Point2D best;
-        boolean otherway;
-        if (leftdown) {
-            bestChild = nearest(n.ld, p, !vertical);
-            best = p.distanceSquaredTo(bestChild) <= p.distanceSquaredTo(n.p) ? bestChild : n.p;
-            otherway = p.distanceSquaredTo(split) <= p.distanceSquaredTo(best);
-        } else {
-            bestChild = nearest(n.ru, p, !vertical);
-            best = p.distanceSquaredTo(bestChild) < p.distanceSquaredTo(n.p) ? bestChild : n.p;
-            otherway = p.distanceSquaredTo(split) < p.distanceSquaredTo(best);
+
+        boolean ld = n.isGreaterThan(p, vertical);
+        Point2D split = new Point2D(vertical ? p.x() : n.p.x(), vertical ? n.p.y() : p.y());
+        Point2D best_child = nearest(ld ? n.ld : n.ru, p, !vertical);
+
+        if(p.distanceSquaredTo(split) < p.distanceSquaredTo(best_child)) {
+            Point2D temp = nearest(ld ? n.ru : n.ld, p, !vertical);
+            best_child = p.distanceSquaredTo(temp) < p.distanceSquaredTo(best_child) ? temp : best_child;
         }
-        if (otherway) {
-            bestChild = nearest(leftdown ? n.ru : n.ld, p, !vertical);
-        }
-        return p.distanceSquaredTo(bestChild) <= p.distanceSquaredTo(best) ? bestChild : best;
+
+        return p.distanceSquaredTo(best_child) < p.distanceSquaredTo(n.p) ? best_child : n.p;
+
+//        if (n == null) {
+//            return new Point2D(Double.MAX_VALUE, Double.MAX_VALUE);
+//        }
+//        boolean leftdown = n.isGreaterThan(p, vertical);
+//        Point2D split;
+//        if (vertical) {
+//            split = new Point2D(p.x(), n.p.y());
+//        } else {
+//            split = new Point2D(n.p.x(), p.y());
+//        }
+//        Point2D bestChild;
+//        Point2D best;
+//        boolean otherway;
+//        if (leftdown) {
+//            bestChild = nearest(n.ld, p, !vertical);
+//            best = p.distanceSquaredTo(bestChild) <= p.distanceSquaredTo(n.p) ? bestChild : n.p;
+//            otherway = p.distanceSquaredTo(split) <= p.distanceSquaredTo(best);
+//        } else {
+//            bestChild = nearest(n.ru, p, !vertical);
+//            best = p.distanceSquaredTo(bestChild) < p.distanceSquaredTo(n.p) ? bestChild : n.p;
+//            otherway = p.distanceSquaredTo(split) < p.distanceSquaredTo(best);
+//        }
+//        if (otherway) {
+//            bestChild = nearest(leftdown ? n.ru : n.ld, p, !vertical);
+//        }
+//        return p.distanceSquaredTo(bestChild) <= p.distanceSquaredTo(best) ? bestChild : best;
     }
 
     /*******************************************************************************

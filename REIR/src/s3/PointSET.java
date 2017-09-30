@@ -66,7 +66,7 @@ public class PointSET {
         for (Point2D bro : set) {
             double bp = bro.distanceSquaredTo(p);
             double pp = point.distanceSquaredTo(p);
-            if (bro.distanceSquaredTo(p) < point.distanceSquaredTo(p)) {
+            if (bp < pp) {
                 point = bro;
             }
         }
