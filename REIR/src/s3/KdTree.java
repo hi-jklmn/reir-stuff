@@ -77,8 +77,8 @@ public class KdTree {
         Node n = root;
         boolean vertical = false;
 
-        while(n != null) {
-            if(p.equals(n.p)) {
+        while (n != null) {
+            if (p.equals(n.p)) {
                 return true;
             }
 
@@ -91,9 +91,7 @@ public class KdTree {
 
     // draw all of the points to standard draw
     public void draw() {
-        if (!isEmpty()) {
-            draw(root, new RectHV(0, 0, 1, 1), false);
-        }
+        draw(root, new RectHV(0, 0, 1, 1), false);
     }
 
     private void draw(Node n, RectHV rect, boolean vertical) {
@@ -162,12 +160,12 @@ public class KdTree {
         boolean otherway;
         if (leftdown) {
             bestChild = nearest(n.ld, p, !vertical);
-            best = p.distanceSquaredTo(bestChild) < p.distanceSquaredTo(n.p) ? bestChild : n.p;
-            otherway = p.distanceSquaredTo(split) < p.distanceSquaredTo(best);
+            best = p.distanceSquaredTo(bestChild) <= p.distanceSquaredTo(n.p) ? bestChild : n.p;
+            otherway = p.distanceSquaredTo(split) <= p.distanceSquaredTo(best);
         } else {
             bestChild = nearest(n.ru, p, !vertical);
-            best = p.distanceSquaredTo(bestChild) <= p.distanceSquaredTo(n.p) ? bestChild : n.p;
-            otherway = p.distanceSquaredTo(split) > p.distanceSquaredTo(best);
+            best = p.distanceSquaredTo(bestChild) < p.distanceSquaredTo(n.p) ? bestChild : n.p;
+            otherway = p.distanceSquaredTo(split) < p.distanceSquaredTo(best);
         }
         if (otherway) {
             bestChild = nearest(leftdown ? n.ru : n.ld, p, !vertical);
