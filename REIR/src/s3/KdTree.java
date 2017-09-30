@@ -149,9 +149,6 @@ public class KdTree {
         if(n == null) {
             return new Point2D(Double.MAX_VALUE, Double.MAX_VALUE);
         }
-        if(p.equals(n.p) || n.ld == null && n.ru == null) {
-            return n.p;
-        }
 
         boolean ld = n.isGreaterThan(p, vertical);
         Point2D split = new Point2D(vertical ? p.x() : n.p.x(), vertical ? n.p.y() : p.y());
@@ -163,34 +160,6 @@ public class KdTree {
         }
 
         return p.distanceSquaredTo(best_child) < p.distanceSquaredTo(n.p) ? best_child : n.p;
-
-//        if (n == null) {
-//            return new Point2D(Double.MAX_VALUE, Double.MAX_VALUE);
-//        }
-//        boolean leftdown = n.isGreaterThan(p, vertical);
-//        Point2D split;
-//        if (vertical) {
-//            split = new Point2D(p.x(), n.p.y());
-//        } else {
-//            split = new Point2D(n.p.x(), p.y());
-//        }
-//        Point2D bestChild;
-//        Point2D best;
-//        if (leftdown) {
-//            bestChild = nearest(n.ld, p, !vertical);
-//            best = p.distanceSquaredTo(bestChild) < p.distanceSquaredTo(n.p) ? bestChild : n.p;
-//            if (p.distanceSquaredTo(split) < p.distanceSquaredTo(best)) {
-//                bestChild = nearest(n.ru, p, !vertical);
-//            }
-//            return p.distanceSquaredTo(bestChild) < p.distanceSquaredTo(best) ? bestChild : best;
-//        } else {
-//            bestChild = nearest(n.ru, p, !vertical);
-//            best = p.distanceSquaredTo(bestChild) <= p.distanceSquaredTo(n.p) ? bestChild : n.p;
-//            if (p.distanceSquaredTo(split) <= p.distanceSquaredTo(best)) {
-//                bestChild = nearest(n.ld, p, !vertical);
-//            }
-//            return p.distanceSquaredTo(bestChild) <= p.distanceSquaredTo(best) ? bestChild : best;
-//        }
     }
 
     /*******************************************************************************
