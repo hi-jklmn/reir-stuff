@@ -17,6 +17,9 @@ public class KdTree {
         }
     }
 
+    private double linewidth = 0.002;
+    private double pointradius = 0.01;
+
     private Node root;
     private int size;
 
@@ -51,7 +54,7 @@ public class KdTree {
     }
 
     private void insert(Node n, Point2D p, boolean vertical) {
-        if(n.p == p) {
+        if (n.p == p) {
             return;
         }
 
@@ -79,14 +82,34 @@ public class KdTree {
 
     // draw all of the points to standard draw
     public void draw() {
-        draw(root);
+        if (!isEmpty()) {
+            draw(root, new RectHV(0,0,1,1), false);
+        }
     }
 
-    private void draw(Node n) {
-        if(n != null) {
-            draw(n.ld);
-            StdDraw.point(n.p.x(), n.p.y());
-            draw(n.ru);
+    private void draw(Node n, RectHV rect, boolean vertical) {
+        if (n == null) {
+            return;
+        }
+        StdDraw.setPenRadius(linewidth);
+        if (vertical) {
+            // draw a horizontal line for the node
+            StdDraw.setPenColor(StdDraw.BLUE);
+            StdDraw.line(rect.xmin(), n.p.y(), rect.xmax(), n.p.y());
+        } else {
+            // draw a vertical line for the node
+            StdDraw.setPenColor(StdDraw.RED);
+            StdDraw.line(n.p.x(), rect.ymin(), n.p.x(), rect.ymax());
+        }
+        StdDraw.setPenRadius(pointradius);
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.point(n.p.x(), n.p.y());
+        if (vertical) {
+            draw(n.ld, new RectHV(rect.xmin(), rect.ymin(), rect.xmax(), n.p.y()), !vertical);
+            draw(n.ru, new RectHV(rect.xmin(), n.p.y(), rect.xmax(), rect.ymax()), !vertical);
+        } else {
+            draw(n.ld, new RectHV(rect.xmin(), rect.ymin(), n.p.x(), rect.ymax()), !vertical);
+            draw(n.ru, new RectHV(n.p.x(), rect.ymin(), rect.xmax(), rect.ymax()), !vertical);
         }
     }
 

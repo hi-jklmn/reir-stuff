@@ -23,6 +23,7 @@ public class NearestNeighborVisualizer {
         In in = new In(filename);
 
         StdDraw.show(0);
+        StdDraw.setCanvasSize(1024,1024);
 
         // initialize the two data structures with point from standard input
         PointSET brute = new PointSET();
