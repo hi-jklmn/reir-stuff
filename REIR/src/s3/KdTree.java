@@ -102,19 +102,20 @@ public class KdTree {
             draw(n.ld, new RectHV(rect.xmin(), rect.ymin(), rect.xmax(), n.p.y()), !vertical);
             draw(n.ru, new RectHV(rect.xmin(), n.p.y(), rect.xmax(), rect.ymax()), !vertical);
             // draw a horizontal line for the node
+            StdDraw.setPenRadius();
             StdDraw.setPenColor(StdDraw.BLUE);
             StdDraw.line(rect.xmin(), n.p.y(), rect.xmax(), n.p.y());
         } else {
             draw(n.ld, new RectHV(rect.xmin(), rect.ymin(), n.p.x(), rect.ymax()), !vertical);
             draw(n.ru, new RectHV(n.p.x(), rect.ymin(), rect.xmax(), rect.ymax()), !vertical);
             // draw a vertical line for the node
+            StdDraw.setPenRadius();
             StdDraw.setPenColor(StdDraw.RED);
             StdDraw.line(n.p.x(), rect.ymin(), n.p.x(), rect.ymax());
         }
         StdDraw.setPenRadius(.01);
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.point(n.p.x(), n.p.y());
-        StdDraw.setPenRadius();
     }
 
     // all points in the set that are inside the rectangle
