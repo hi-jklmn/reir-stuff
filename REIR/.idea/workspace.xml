@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ee24970-53e7-4b92-9eef-da779d9270eb" name="Default" comment="Things should work now">
+    <list default="true" id="5ee24970-53e7-4b92-9eef-da779d9270eb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -567,11 +567,18 @@
       <option name="project" value="LOCAL" />
       <updated>1506731451313</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Things should work now">
+      <created>1506731462095</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1506731462095</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17403000" />
+    <option name="totallyTimeSpent" value="17407000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="384" y="198" width="2102" height="1883" extended-state="0" />
@@ -636,9 +643,9 @@
     <MESSAGE value="redy go" />
     <MESSAGE value="first shteps" />
     <MESSAGE value="kdTree getting there" />
-    <MESSAGE value="Things should work now" />
     <MESSAGE value="nearest is a little better" />
-    <option name="LAST_COMMIT_MESSAGE" value="nearest is a little better" />
+    <MESSAGE value="Things should work now" />
+    <option name="LAST_COMMIT_MESSAGE" value="Things should work now" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
