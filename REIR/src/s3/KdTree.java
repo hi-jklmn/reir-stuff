@@ -21,9 +21,6 @@ public class KdTree {
         }
     }
 
-    private double linewidth = 0.002;
-    private double pointradius = 0.01;
-
     private Node root;
     private int size;
 
@@ -54,7 +51,7 @@ public class KdTree {
     }
 
     private void insert(Node n, Point2D p, boolean vertical) {
-        if (n.p == p) {
+        if (n.p.equals(p)) {
             return;
         }
 
@@ -77,7 +74,7 @@ public class KdTree {
 
     // does the set contain the point p?
     public boolean contains(Point2D p) {
-        return p == nearest(p);
+        return p.equals(nearest(p));
     }
 
     // draw all of the points to standard draw
@@ -91,7 +88,7 @@ public class KdTree {
         if (n == null) {
             return;
         }
-        StdDraw.setPenRadius(linewidth);
+        StdDraw.setPenRadius();
         if (vertical) {
             // draw a horizontal line for the node
             StdDraw.setPenColor(StdDraw.BLUE);
@@ -101,7 +98,7 @@ public class KdTree {
             StdDraw.setPenColor(StdDraw.RED);
             StdDraw.line(n.p.x(), rect.ymin(), n.p.x(), rect.ymax());
         }
-        StdDraw.setPenRadius(pointradius);
+        StdDraw.setPenRadius(.01);
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.point(n.p.x(), n.p.y());
         if (vertical) {
@@ -124,13 +121,13 @@ public class KdTree {
         if (n == null) {
             return;
         }
-        if ((vertical && n.p.y() > rect.ymin()) || (!vertical && n.p.x() > rect.xmin())) {
+        if ((vertical && n.p.y() >= rect.ymin()) || (!vertical && n.p.x() >= rect.xmin())) {
             range(n.ld, rect, bag, !vertical);
         }
         if (rect.contains(n.p)) {
             bag.add(n.p);
         }
-        if ((vertical && n.p.y() < rect.ymax()) || (!vertical && n.p.x() < rect.xmax())) {
+        if ((vertical && n.p.y() <= rect.ymax()) || (!vertical && n.p.x() <= rect.xmax())) {
             range(n.ru, rect, bag, !vertical);
         }
     }
@@ -141,30 +138,35 @@ public class KdTree {
     }
 
     private Point2D nearest(Node n, Point2D p, boolean vertical) {
-
-        Node next = n.ru;
-        boolean leftdown = false;
-
-        if(n.isGreaterThan(p, vertical)) {
-            next = n.ld;
-            leftdown = true;
+        if (n == null) {
+            return new Point2D(Double.MAX_VALUE, Double.MAX_VALUE);
         }
-
-        Point2D out = n.p;
-
-        if(next != null) {
-            out = nearest(next, p, !vertical);
+        boolean leftdown = true;
+        Point2D tmp;
+        Point2D best;
+        if (n.isGreaterThan(p, vertical)) {
+            tmp = nearest(n.ld, p, !vertical);
+            best = p.distanceSquaredTo(tmp) <= p.distanceSquaredTo(n.p) ? tmp : n.p;
+        } else {
+            tmp = nearest(n.ru, p, !vertical);
+            leftdown = false;
+            best = p.distanceSquaredTo(tmp) < p.distanceSquaredTo(n.p) ? tmp : n.p;
         }
-
-        if(p.distanceSquaredTo(n.p) <= p.distanceSquaredTo(out)) {
-            next = leftdown ? n.ru : n.ld;
-            if(next != null) {
-                out = nearest(next, p, !vertical);
-                return p.distanceSquaredTo(n.p) < p.distanceSquaredTo(out) ? n.p : out;
+        Point2D split;
+        if (vertical) {
+            split = new Point2D(p.x(), n.p.y());
+        } else {
+            split = new Point2D(n.p.x(), p.y());
+        }
+        boolean otherway = p.distanceSquaredTo(best) > p.distanceSquaredTo(split);
+        if (otherway) {
+            if (leftdown) {
+                tmp = nearest(n.ru, p, !vertical);
+            } else {
+                tmp = nearest(n.ld, p, !vertical);
             }
         }
-
-        return out;
+        return p.distanceSquaredTo(tmp) <= p.distanceSquaredTo(best) ? tmp : best;
     }
 
     /*******************************************************************************
@@ -173,54 +175,75 @@ public class KdTree {
     public static void main(String[] args) {
         In in = new In();
         Out out = new Out();
-        int nrOfRecangles = in.readInt();
-        int nrOfPointsCont = in.readInt();
-        int nrOfPointsNear = in.readInt();
-        RectHV[] rectangles = new RectHV[nrOfRecangles];
-        Point2D[] pointsCont = new Point2D[nrOfPointsCont];
-        Point2D[] pointsNear = new Point2D[nrOfPointsNear];
-        for (int i = 0; i < nrOfRecangles; i++) {
-            rectangles[i] = new RectHV(in.readDouble(), in.readDouble(),
-                    in.readDouble(), in.readDouble());
+        int N = in.readInt(), C = in.readInt(), T = 50;
+        Point2D[] queries = new Point2D[C];
+        KdTree tree = new KdTree();
+        out.printf("Inserting %d points into tree\n", N);
+        for (int i = 0; i < N; i++) {
+            tree.insert(new Point2D(in.readDouble(), in.readDouble()));
         }
-        for (int i = 0; i < nrOfPointsCont; i++) {
-            pointsCont[i] = new Point2D(in.readDouble(), in.readDouble());
+        out.printf("tree.size(): %d\n", tree.size());
+        out.printf("Testing `nearest` method, querying %d points\n", C);
+
+        for (int i = 0; i < C; i++) {
+            queries[i] = new Point2D(in.readDouble(), in.readDouble());
+            out.printf("%s: %s\n", queries[i], tree.nearest(queries[i]));
         }
-        for (int i = 0; i < nrOfPointsNear; i++) {
-            pointsNear[i] = new Point2D(in.readDouble(), in.readDouble());
-        }
-        KdTree set = new KdTree();
-        for (int i = 0; !in.isEmpty(); i++) {
-            double x = in.readDouble(), y = in.readDouble();
-            set.insert(new Point2D(x, y));
-        }
-        for (int i = 0; i < nrOfRecangles; i++) {
-            // Query on rectangle i, sort the result, and print
-            Iterable<Point2D> ptset = set.range(rectangles[i]);
-            int ptcount = 0;
-            for (Point2D p : ptset)
-                ptcount++;
-            Point2D[] ptarr = new Point2D[ptcount];
-            int j = 0;
-            for (Point2D p : ptset) {
-                ptarr[j] = p;
-                j++;
+        for (int i = 0; i < T; i++) {
+            for (int j = 0; j < C; j++) {
+                tree.nearest(queries[j]);
             }
-            Arrays.sort(ptarr);
-            out.println("Inside rectangle " + (i + 1) + ":");
-            for (j = 0; j < ptcount; j++)
-                out.println(ptarr[j]);
         }
-        out.println("Contain test:");
-        for (int i = 0; i < nrOfPointsCont; i++) {
-            out.println((i + 1) + ": " + set.contains(pointsCont[i]));
-        }
-
-        out.println("Nearest test:");
-        for (int i = 0; i < nrOfPointsNear; i++) {
-            out.println((i + 1) + ": " + set.nearest(pointsNear[i]));
-        }
-
-        out.println();
+//        In in = new In();
+//        Out out = new Out();
+//        int nrOfRecangles = in.readInt();
+//        int nrOfPointsCont = in.readInt();
+//        int nrOfPointsNear = in.readInt();
+//        RectHV[] rectangles = new RectHV[nrOfRecangles];
+//        Point2D[] pointsCont = new Point2D[nrOfPointsCont];
+//        Point2D[] pointsNear = new Point2D[nrOfPointsNear];
+//        for (int i = 0; i < nrOfRecangles; i++) {
+//            rectangles[i] = new RectHV(in.readDouble(), in.readDouble(),
+//                    in.readDouble(), in.readDouble());
+//        }
+//        for (int i = 0; i < nrOfPointsCont; i++) {
+//            pointsCont[i] = new Point2D(in.readDouble(), in.readDouble());
+//        }
+//        for (int i = 0; i < nrOfPointsNear; i++) {
+//            pointsNear[i] = new Point2D(in.readDouble(), in.readDouble());
+//        }
+//        KdTree set = new KdTree();
+//        for (int i = 0; !in.isEmpty(); i++) {
+//            double x = in.readDouble(), y = in.readDouble();
+//            set.insert(new Point2D(x, y));
+//        }
+//        for (int i = 0; i < nrOfRecangles; i++) {
+//            // Query on rectangle i, sort the result, and print
+//            Iterable<Point2D> ptset = set.range(rectangles[i]);
+//            int ptcount = 0;
+//            for (Point2D p : ptset)
+//                ptcount++;
+//            Point2D[] ptarr = new Point2D[ptcount];
+//            int j = 0;
+//            for (Point2D p : ptset) {
+//                ptarr[j] = p;
+//                j++;
+//            }
+//            Arrays.sort(ptarr);
+//            out.println("Inside rectangle " + (i + 1) + ":");
+//            for (j = 0; j < ptcount; j++)
+//                out.println(ptarr[j]);
+//        }
+//        out.println("Contain test:");
+//        for (int i = 0; i < nrOfPointsCont; i++) {
+//            out.println((i + 1) + ": " + set.contains(pointsCont[i]));
+//        }
+//
+//        out.println("Nearest test:");
+//        for (int i = 0; i < nrOfPointsNear; i++) {
+//            out.println((i + 1) + ": " + set.nearest(pointsNear[i]));
+//        }
+//
+//        out.println();
     }
 }

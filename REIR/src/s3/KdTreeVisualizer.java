@@ -21,11 +21,12 @@ public class KdTreeVisualizer {
         StdDraw.setCanvasSize(2048,2048);
         StdDraw.enableDoubleBuffering();
         KdTree kdtree = new KdTree();
+        boolean justpressed = true;
         while (true) {
-            if (StdDraw.isMousePressed()) {
+            if (StdDraw.isMousePressed() && justpressed) {
                 double x = StdDraw.mouseX();
                 double y = StdDraw.mouseY();
-                StdOut.printf("%8.6f %8.6f\n", x, y);
+                //StdOut.printf("%8.6f %8.6f\n", x, y);
                 Point2D p = new Point2D(x, y);
                 if (rect.contains(p)) {
                     StdOut.printf("%8.6f %8.6f\n", x, y);
@@ -34,6 +35,9 @@ public class KdTreeVisualizer {
                     kdtree.draw();
                     StdDraw.show();
                 }
+                justpressed = false;
+            } else if (!StdDraw.isMousePressed()) {
+                justpressed = true;
             }
             StdDraw.pause(50);
         }
