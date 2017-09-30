@@ -64,6 +64,11 @@ public class PointSET {
     public Point2D nearest(Point2D p) {
         Point2D point = set.max();
         for (Point2D bro : set) {
+            double bp = bro.distanceSquaredTo(p);
+            double pp = point.distanceSquaredTo(p);
+            if (bp == pp) {
+
+            }
             if (bro.distanceSquaredTo(p) < point.distanceSquaredTo(p)) {
                 point = bro;
             }
