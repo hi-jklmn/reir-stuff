@@ -61,6 +61,7 @@ public class NearestNeighborVisualizer {
                 }
             }
         }
+        int randombro = StdRandom.uniform(Integer.MAX_VALUE);
         StdOut.print("number of inequalities: " + Integer.toString(bag.size()));
         while (true) {
 
@@ -116,7 +117,7 @@ public class NearestNeighborVisualizer {
                 // MAKE A PARTY
                 StdDraw.setPenRadius(4 / granularity);
                 for (Point2D megapoint : dict.keys()) {
-                    StdRandom.setSeed(megapoint.hashCode());
+                    StdRandom.setSeed(megapoint.hashCode() + randombro);
                     StdDraw.setPenColor(StdRandom.uniform(256), StdRandom.uniform(256), StdRandom.uniform(256));
                     for (Point2D p : dict.get(megapoint)) {
                         StdDraw.point(p.x(), p.y());

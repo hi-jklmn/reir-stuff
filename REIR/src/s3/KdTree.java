@@ -158,20 +158,21 @@ public class KdTree {
         }
         Point2D bestChild;
         Point2D best;
-        boolean otherway;
         if (leftdown) {
             bestChild = nearest(n.ld, p, !vertical);
-            best = p.distanceSquaredTo(bestChild) <= p.distanceSquaredTo(n.p) ? bestChild : n.p;
-            otherway = p.distanceSquaredTo(split) <= p.distanceSquaredTo(best);
+            best = p.distanceSquaredTo(bestChild) < p.distanceSquaredTo(n.p) ? bestChild : n.p;
+            if (p.distanceSquaredTo(split) < p.distanceSquaredTo(best)) {
+                bestChild = nearest(n.ru, p, !vertical);
+            }
+            return p.distanceSquaredTo(bestChild) < p.distanceSquaredTo(best) ? bestChild : best;
         } else {
             bestChild = nearest(n.ru, p, !vertical);
-            best = p.distanceSquaredTo(bestChild) < p.distanceSquaredTo(n.p) ? bestChild : n.p;
-            otherway = p.distanceSquaredTo(split) < p.distanceSquaredTo(best);
+            best = p.distanceSquaredTo(bestChild) <= p.distanceSquaredTo(n.p) ? bestChild : n.p;
+            if (p.distanceSquaredTo(split) <= p.distanceSquaredTo(best)) {
+                bestChild = nearest(n.ld, p, !vertical);
+            }
+            return p.distanceSquaredTo(bestChild) <= p.distanceSquaredTo(best) ? bestChild : best;
         }
-        if (otherway) {
-            bestChild = nearest(leftdown ? n.ru : n.ld, p, !vertical);
-        }
-        return p.distanceSquaredTo(bestChild) <= p.distanceSquaredTo(best) ? bestChild : best;
     }
 
     /*******************************************************************************
