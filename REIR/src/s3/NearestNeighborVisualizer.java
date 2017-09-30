@@ -16,7 +16,7 @@ import edu.princeton.cs.algs4.*;
 
 public class NearestNeighborVisualizer {
 
-    public final static int resolution = 2048;
+    public final static int resolution = 1024;
 
     public static void main(String[] args) {
         String filename = args[0];
