@@ -114,18 +114,29 @@ public class KdTree {
     }
 
     private Point2D nearest(Node n, Point2D p, boolean vertical) {
-        Node next;
-        if (vertical) {
-            next = p.y() < n.p.y() ? n.ld : n.ru;
-        } else {
-            next = p.x() < n.p.x() ? n.ld : n.ru;
+
+        Node next = n.ru;
+        boolean leftdown = false;
+
+        if((vertical && p.y() < n.p.y()) || (!vertical && p.x() < n.p.x())) {
+            next = n.ld;
+            leftdown = true;
         }
-        if (next == null || p == n.p) {
-            return n.p;
-        } else {
-            Point2D inner = nearest(next, p, !vertical);
-            return p.distanceSquaredTo(n.p) < p.distanceSquaredTo(inner) ? n.p : inner;
+
+        Point2D out = n.p;
+
+        if(next != null) {
+            out = nearest(next, p, !vertical);
         }
+
+        if(out == n.p || p.distanceSquaredTo(n.p) < p.distanceSquaredTo(out)) {
+            next = leftdown ? n.ru : n.ld;
+            if(next != null) {
+                out = nearest(next, p, !vertical);
+            }
+        }
+
+        return out == n.p || p.distanceSquaredTo(n.p) < p.distanceSquaredTo(out) ? n.p : out;
     }
 
     /*******************************************************************************

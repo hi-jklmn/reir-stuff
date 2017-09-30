@@ -49,6 +49,8 @@ public class NearestNeighborVisualizer {
             brute.draw();
             // for (Point2D p : brute.points())  p.draw();
 
+            StdDraw.point(StdDraw.mouseX(), StdDraw.mouseY());
+
             // draw in red the nearest neighbor according to the brute-force algorithm
             StdDraw.setPenRadius(.03);
             StdDraw.setPenColor(StdDraw.RED);

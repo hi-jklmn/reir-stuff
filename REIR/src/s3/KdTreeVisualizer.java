@@ -21,7 +21,7 @@ public class KdTreeVisualizer {
         StdDraw.enableDoubleBuffering();
         KdTree kdtree = new KdTree();
         while (true) {
-            if (StdDraw.mousePressed()) {
+            if (StdDraw.isMousePressed()) {
                 double x = StdDraw.mouseX();
                 double y = StdDraw.mouseY();
                 StdOut.printf("%8.6f %8.6f\n", x, y);
