@@ -15,6 +15,10 @@ public class KdTree {
             ld = null;
             ru = null;
         }
+
+        public boolean isGreaterThan(Point2D p, boolean vertical) {
+            return (vertical && p.y() < this.p.y()) || (!vertical && p.x() < this.p.x());
+        }
     }
 
     private double linewidth = 0.002;
@@ -49,16 +53,12 @@ public class KdTree {
         }
     }
 
-    private boolean strictly_less(Node n, Point2D p, boolean vertical) {
-        return (vertical && p.y() < n.p.y()) || (!vertical && p.x() < n.p.x());
-    }
-
     private void insert(Node n, Point2D p, boolean vertical) {
         if (n.p == p) {
             return;
         }
 
-        if(strictly_less(n, p, vertical)) {
+        if(n.isGreaterThan(p, vertical)) {
             if(n.ld == null) {
                 size++;
                 n.ld = new Node(p);
@@ -145,7 +145,7 @@ public class KdTree {
         Node next = n.ru;
         boolean leftdown = false;
 
-        if(strictly_less(n, p, vertical)) {
+        if(n.isGreaterThan(p, vertical)) {
             next = n.ld;
             leftdown = true;
         }

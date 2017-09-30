@@ -23,7 +23,7 @@ public class NearestNeighborVisualizer {
         In in = new In(filename);
 
         StdDraw.show(0);
-        StdDraw.setCanvasSize(1024,1024);
+        StdDraw.setCanvasSize(2048,2048);
 
         // initialize the two data structures with point from standard input
         PointSET brute = new PointSET();
@@ -47,7 +47,7 @@ public class NearestNeighborVisualizer {
             StdDraw.clear();
             StdDraw.setPenColor(StdDraw.BLACK);
             StdDraw.setPenRadius(.01);
-            brute.draw();
+            kdtree.draw();
             // for (Point2D p : brute.points())  p.draw();
 
             StdDraw.point(StdDraw.mouseX(), StdDraw.mouseY());

@@ -18,7 +18,7 @@ public class KdTreeVisualizer {
 
     public static void main(String[] args) {
         RectHV rect = new RectHV(0.0, 0.0, 1.0, 1.0);
-        StdDraw.setCanvasSize(1024,1024);
+        StdDraw.setCanvasSize(2048,2048);
         StdDraw.enableDoubleBuffering();
         KdTree kdtree = new KdTree();
         while (true) {

@@ -27,7 +27,7 @@ public class RangeSearchVisualizer {
 
         StdDraw.show(0);
 
-        StdDraw.setCanvasSize(1024,1024);
+        StdDraw.setCanvasSize(2048,2048);
 
         // initialize the data structures with N points from standard input
         PointSET brute = new PointSET();
