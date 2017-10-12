@@ -142,14 +142,20 @@ public class KdTree {
 
     // a nearest neighbor in the set to p; null if set is empty
     public Point2D nearest(Point2D p) {
+        lcount = 0;
+        count = 0;
         return isEmpty() ? null : nearest(root, p, false);
     }
 
+    public int lcount = 0;
+    public int count = 0;
+
     private Point2D nearest(Node n, Point2D p, boolean vertical) {
+        lcount++;
         if(n == null) {
             return new Point2D(Double.MAX_VALUE, Double.MAX_VALUE);
         }
-
+        count++;
         boolean ld = n.isGreaterThan(p, vertical);
         Point2D split = new Point2D(vertical ? p.x() : n.p.x(), vertical ? n.p.y() : p.y());
         Point2D best_child = nearest(ld ? n.ld : n.ru, p, !vertical);
@@ -166,27 +172,75 @@ public class KdTree {
      * Test client
      ******************************************************************************/
     public static void main(String[] args) {
-        In in = new In();
-        Out out = new Out();
-        int N = in.readInt(), C = in.readInt(), T = 50;
-        Point2D[] queries = new Point2D[C];
-        KdTree tree = new KdTree();
-        out.printf("Inserting %d points into tree\n", N);
-        for (int i = 0; i < N; i++) {
-            tree.insert(new Point2D(in.readDouble(), in.readDouble()));
-        }
-        out.printf("tree.size(): %d\n", tree.size());
-        out.printf("Testing `nearest` method, querying %d points\n", C);
 
-        for (int i = 0; i < C; i++) {
-            queries[i] = new Point2D(in.readDouble(), in.readDouble());
-            out.printf("%s: %s\n", queries[i], tree.nearest(queries[i]));
+//        for (int i = 0; i <= 24; i++) {
+//            KdTree ktree = new KdTree();
+//            Stopwatch s = new Stopwatch();
+//            for (int j = 0; j < 1<<i; j++) {
+//                ktree.insert(new Point2D(StdRandom.uniform(), StdRandom.uniform()));
+//            }
+//            StdOut.println("$2^{" + Integer.toString(i) + "}$ & " + Double.toString(s.elapsedTime()) + " \\\\");
+//        }
+
+        KdTree impl = new KdTree();
+
+        String filename = args[0];
+        In in = new In(filename);
+        while (!in.isEmpty()) {
+            impl.insert(new Point2D(in.readDouble(), in.readDouble()));
         }
-        for (int i = 0; i < T; i++) {
-            for (int j = 0; j < C; j++) {
-                tree.nearest(queries[j]);
-            }
+
+        filename = args[1];
+        in = new In(filename);
+        int iterations = 0;
+        Bag<Point2D> bag = new Bag<>();
+        while (!in.isEmpty()) {
+            bag.add(new Point2D(in.readDouble(), in.readDouble()));
+            iterations++;
         }
+
+        StdOut.println("Structure initialized");
+
+        Stopwatch s = new Stopwatch();
+
+        int[] counts = new int[bag.size()];
+        int i = 0;
+        for (Point2D p : bag) {
+            impl.nearest(p);
+            counts[i++] = impl.count;
+        }
+        StdOut.print("The time for " + Integer.toString(iterations) + " iterations was: ");
+        StdOut.println(Double.toString(s.elapsedTime()) + " s");
+        StdOut.println("The recursive iterations were:");
+        StdOut.println("mean:" + Double.toString(StdStats.mean(counts)));
+
+        StdOut.println("max:" + Double.toString(StdStats.max(counts)));
+        StdOut.println("min:" + Double.toString(StdStats.min(counts)));
+        StdOut.println("stddev:" + Double.toString(StdStats.stddev(counts)));
+        StdOut.println("var:" + Double.toString(StdStats.var(counts)));
+
+//        In in = new In();
+//        Out out = new Out();
+//        int N = in.readInt(), C = in.readInt(), T = 50;
+//        Point2D[] queries = new Point2D[C];
+//        KdTree tree = new KdTree();
+//        out.printf("Inserting %d points into tree\n", N);
+//        for (int i = 0; i < N; i++) {
+//            tree.insert(new Point2D(in.readDouble(), in.readDouble()));
+//        }
+//        out.printf("tree.size(): %d\n", tree.size());
+//        out.printf("Testing `nearest` method, querying %d points\n", C);
+//
+//        for (int i = 0; i < C; i++) {
+//            queries[i] = new Point2D(in.readDouble(), in.readDouble());
+//            out.printf("%s: %s\n", queries[i], tree.nearest(queries[i]));
+//        }
+//        for (int i = 0; i < T; i++) {
+//            for (int j = 0; j < C; j++) {
+//                tree.nearest(queries[j]);
+//            }
+//        }
+
 //        In in = new In();
 //        Out out = new Out();
 //        int nrOfRecangles = in.readInt();
@@ -207,7 +261,7 @@ public class KdTree {
 //        }
 //        KdTree set = new KdTree();
 //        for (int i = 0; !in.isEmpty(); i++) {
-//            double x = in.readDouble(), y = in.readDouble();
+//            double x = in.readDouble(), y = in.readDouble([0.01,0.025,0.079,0.165,0.479,1.052,2.193,4.665,3.393,7.113]);
 //            set.insert(new Point2D(x, y));
 //        }
 //        for (int i = 0; i < nrOfRecangles; i++) {

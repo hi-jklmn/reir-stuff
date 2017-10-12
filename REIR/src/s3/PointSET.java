@@ -13,19 +13,20 @@ package s3;
 
 import edu.princeton.cs.algs4.*;
 
-import java.util.Arrays;
-
 
 public class PointSET {
 
     private SET<Point2D> set;
+
     // construct an empty set of points
     public PointSET() {
         set = new SET<Point2D>();
     }
 
     // is the set empty?
-    public boolean isEmpty() { return set.isEmpty(); }
+    public boolean isEmpty() {
+        return set.isEmpty();
+    }
 
     // number of points in the set
     public int size() {
@@ -64,9 +65,7 @@ public class PointSET {
     public Point2D nearest(Point2D p) {
         Point2D point = set.max();
         for (Point2D bro : set) {
-            double bp = bro.distanceSquaredTo(p);
-            double pp = point.distanceSquaredTo(p);
-            if (bp < pp) {
+            if (bro.distanceSquaredTo(p) < point.distanceSquaredTo(p)) {
                 point = bro;
             }
         }
@@ -74,27 +73,56 @@ public class PointSET {
     }
 
     public static void main(String[] args) {
-        In in = new In();
-        Out out = new Out();
-        int N = in.readInt(), C = in.readInt(), T = 50;
-        Point2D[] queries = new Point2D[C];
-        PointSET set = new PointSET();
-        out.printf("Inserting %d points into set\n", N);
-        for (int i = 0; i < N; i++) {
-            set.insert(new Point2D(in.readDouble(), in.readDouble()));
-        }
-        out.printf("set.size(): %d\n", set.size());
-        out.printf("Testing `nearest` method, querying %d points\n", C);
 
-        for (int i = 0; i < C; i++) {
-            queries[i] = new Point2D(in.readDouble(), in.readDouble());
-            out.printf("%s: %s\n", queries[i], set.nearest(queries[i]));
+        PointSET impl = new PointSET();
+
+        String filename = args[0];
+        In in = new In(filename);
+        while (!in.isEmpty()) {
+            impl.insert(new Point2D(in.readDouble(), in.readDouble()));
         }
-        for (int i = 0; i < T; i++) {
-            for (int j = 0; j < C; j++) {
-                set.nearest(queries[j]);
-            }
+
+        filename = args[1];
+        in = new In(filename);
+        int iterations = 0;
+        Bag<Point2D> bag = new Bag<>();
+        while (!in.isEmpty()) {
+            bag.add(new Point2D(in.readDouble(), in.readDouble()));
+            iterations++;
         }
+
+        StdOut.println("Structure initialized");
+
+        Stopwatch s = new Stopwatch();
+        for (Point2D p : bag) {
+            impl.nearest(p);
+        }
+        StdOut.print("The time for " + Integer.toString(iterations) + " iterations was: ");
+        StdOut.println(Double.toString(s.elapsedTime()) + " s");
+
+
+//        In in = new In();
+//        Out out = new Out();
+//        int N = in.readInt(), C = in.readInt(), T = 50;
+//        Point2D[] queries = new Point2D[C];
+//        PointSET set = new PointSET();
+//        out.printf("Inserting %d points into set\n", N);
+//        for (int i = 0; i < N; i++) {
+//            set.insert(new Point2D(in.readDouble(), in.readDouble()));
+//        }
+//        out.printf("set.size(): %d\n", set.size());
+//        out.printf("Testing `nearest` method, querying %d points\n", C);
+//
+//        for (int i = 0; i < C; i++) {
+//            queries[i] = new Point2D(in.readDouble(), in.readDouble());
+//            out.printf("%s: %s\n", queries[i], set.nearest(queries[i]));
+//        }
+//        for (int i = 0; i < T; i++) {
+//            for (int j = 0; j < C; j++) {
+//                set.nearest(queries[j]);
+//            }
+//        }
+
 //        In in = new In();
 //        Out out = new Out();
 //        int nrOfRecangles = in.readInt();
