@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ee24970-53e7-4b92-9eef-da779d9270eb" name="Default" comment="draw() are gooderererer">
+    <list default="true" id="5ee24970-53e7-4b92-9eef-da779d9270eb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/s3/KdTree.java" afterPath="$PROJECT_DIR$/src/s3/KdTree.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/s3/NearestNeighborVisualizer.java" afterPath="$PROJECT_DIR$/src/s3/NearestNeighborVisualizer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/s3/PointSET.java" afterPath="$PROJECT_DIR$/src/s3/PointSET.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../S3/SomeInputs/input10K.txt" afterPath="$PROJECT_DIR$/../S3/SomeInputs/input10K.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <ignored path=".idea/" />
@@ -21,121 +24,14 @@
     <fileColor scope="Non-Project Files (Material Palenight)" color="2f2e43" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="NearestNeighborVisualizer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/s3/NearestNeighborVisualizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="119" column="70" lean-forward="false" selection-start-line="119" selection-start-column="70" selection-end-line="119" selection-end-column="70" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StdDraw.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../algs4.jar!/edu/princeton/cs/algs4/StdDraw.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="1826" column="26" lean-forward="false" selection-start-line="1826" selection-start-column="26" selection-end-line="1826" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StdRandom.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../algs4.jar!/edu/princeton/cs/algs4/StdRandom.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="119" column="22" lean-forward="false" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KdTreeVisualizer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/s3/KdTreeVisualizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="19" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RectHV.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/s3/RectHV.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KdTree.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/s3/KdTree.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="143" column="39" lean-forward="false" selection-start-line="143" selection-start-column="39" selection-end-line="143" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#contains#0;class#KdTree#0" expanded="false" />
-                <element signature="e#2093#2094#0" expanded="true" />
-                <element signature="e#2150#2151#0" expanded="true" />
-                <element signature="e#3377#3386#0" expanded="true" />
-                <element signature="e#4137#4138#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PointSET.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/s3/PointSET.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="67" column="51" lean-forward="false" selection-start-line="67" selection-start-column="51" selection-end-line="67" selection-end-column="51" />
-              <folding>
-                <element signature="e#1337#1346#0" expanded="true" />
-                <marker date="1506799498394" expanded="true" signature="1930:4889" ph="{...}" />
-                <marker date="1506799498394" expanded="true" signature="2766:4883" ph="//..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Point2D.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../algs4.jar!/edu/princeton/cs/algs4/Point2D.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="30" column="19" lean-forward="false" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RangeSearchVisualizer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/s3/RangeSearchVisualizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="29" column="39" lean-forward="false" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>tree</find>
       <find>0.496</find>
       <find>0.496, 0</find>
+      <find>mouse</find>
     </findStrings>
     <replaceStrings>
       <replace>set</replace>
@@ -177,10 +73,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="615" />
-    <option name="y" value="74" />
+    <option name="y" value="132" />
     <option name="width" value="1812" />
-    <option name="height" value="1861" />
+    <option name="height" value="1851" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -198,9 +93,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -228,7 +120,10 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -237,120 +132,8 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/s3/KdTree.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/s3/NearestNeighborVisualizer.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/s3/PointSET.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -364,7 +147,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.NearestNeighborVisualizer">
+  <component name="RunManager" selected="Application.KdTree">
     <configuration name="KdTree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -374,7 +157,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="s3.KdTree" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;../S3/SomeInputs/test7.txt&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;../S3/SomeInputs/input1M.txt&quot; &quot;../S3/SomeInputs/input2M.txt&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -403,7 +186,7 @@
       <module name="REIR" />
       <envs />
     </configuration>
-    <configuration name="NearestNeighborVisualizer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="NearestNeighborVisualizer" type="Application" factoryName="Application" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="s3.*" />
@@ -412,7 +195,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="s3.NearestNeighborVisualizer" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;../S3/SomeInputs/test7.txt&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;../S3/SomeInputs/input10K.txt&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
@@ -430,9 +213,9 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="s3.PointSET" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;../S3/SomeInputs/input1M.txt&quot; &quot;../S3/SomeInputs/input10K.txt&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
@@ -549,12 +332,11 @@
       <item index="4" class="java.lang.String" itemvalue="Application.PointSET" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.NearestNeighborVisualizer" />
-        <item index="1" class="java.lang.String" itemvalue="Application.KdTree" />
-        <item index="2" class="java.lang.String" itemvalue="Application.PointSET" />
-        <item index="3" class="java.lang.String" itemvalue="Application.KdTreeVisualizer" />
-        <item index="4" class="java.lang.String" itemvalue="Application.RangeSearchVisualizer" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Application.KdTree" />
+        <item index="1" class="java.lang.String" itemvalue="Application.PointSET" />
+        <item index="2" class="java.lang.String" itemvalue="Application.KdTreeVisualizer" />
+        <item index="3" class="java.lang.String" itemvalue="Application.RangeSearchVisualizer" />
       </list>
     </recent_temporary>
   </component>
@@ -579,7 +361,9 @@
       <workItem from="1506710776740" duration="596000" />
       <workItem from="1506711665614" duration="965000" />
       <workItem from="1506713334354" duration="41064000" />
-      <workItem from="1506792552673" duration="7967000" />
+      <workItem from="1506792552673" duration="12206000" />
+      <workItem from="1506808352037" duration="9680000" />
+      <workItem from="1507314275425" duration="636000" />
     </task>
     <task id="LOCAL-00001" summary="redy go">
       <created>1506713583079</created>
@@ -672,26 +456,31 @@
       <option name="project" value="LOCAL" />
       <updated>1506799055729</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="ALL WORK ACB GRATE">
+      <created>1506800550523</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1506800550523</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50592000" />
+    <option name="totallyTimeSpent" value="65147000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="615" y="74" width="1812" height="1861" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="132" width="1812" height="1851" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24293134" sideWeight="0.49750933" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945737" sideWeight="0.50249064" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34218118" sideWeight="0.49750933" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34416714" sideWeight="0.49750933" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -701,14 +490,17 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3998856" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39988458" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="JITWatch" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24260011" sideWeight="0.49750933" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="JITWatch Report" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948643" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -730,24 +522,179 @@
     <MESSAGE value="draw() are gooderer" />
     <MESSAGE value="draw() are gooderererer" />
     <MESSAGE value="Refreshing colors and things pass where others do not" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refreshing colors and things pass where others do not" />
+    <MESSAGE value="ALL WORK ACB GRATE" />
+    <option name="LAST_COMMIT_MESSAGE" value="ALL WORK ACB GRATE" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/s3/RectHV.java</url>
-          <line>50</line>
-          <properties />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/s3/NearestNeighborVisualizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2176">
+          <caret line="136" column="18" lean-forward="false" selection-start-line="136" selection-start-column="18" selection-end-line="136" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../algs4.jar!/edu/princeton/cs/algs4/StdDraw.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29216">
+          <caret line="1826" column="26" lean-forward="false" selection-start-line="1826" selection-start-column="26" selection-end-line="1826" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../algs4.jar!/edu/princeton/cs/algs4/StdRandom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1904">
+          <caret line="119" column="22" lean-forward="false" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/s3/KdTreeVisualizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="19" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/s3/RectHV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="784">
+          <caret line="49" column="41" lean-forward="false" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/s3/PointSET.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1040">
+          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="100" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../algs4.jar!/edu/princeton/cs/algs4/Point2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1824">
+          <caret line="114" column="27" lean-forward="false" selection-start-line="114" selection-start-column="27" selection-end-line="114" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/s3/RangeSearchVisualizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="29" column="39" lean-forward="false" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/s3/KdTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2192">
+          <caret line="145" column="18" lean-forward="false" selection-start-line="145" selection-start-column="18" selection-end-line="145" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3377#3386#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/s3/NearestNeighborVisualizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="36" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../algs4.jar!/edu/princeton/cs/algs4/StdDraw.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29216">
+          <caret line="1826" column="26" lean-forward="false" selection-start-line="1826" selection-start-column="26" selection-end-line="1826" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/s3/KdTreeVisualizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="19" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../algs4.jar!/edu/princeton/cs/algs4/StdRandom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1120">
+          <caret line="119" column="22" lean-forward="false" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/s3/RectHV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/s3/KdTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3040">
+          <caret line="208" column="41" lean-forward="true" selection-start-line="208" selection-start-column="41" selection-end-line="211" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3377#3386#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../algs4.jar!/edu/princeton/cs/algs4/Point2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="30" column="19" lean-forward="false" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/s3/RangeSearchVisualizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="29" column="39" lean-forward="false" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/s3/PointSET.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1312">
+          <caret line="92" column="62" lean-forward="false" selection-start-line="92" selection-start-column="62" selection-end-line="92" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/s3/NearestNeighborVisualizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1003">
@@ -798,11 +745,7 @@
           <caret line="157" column="52" lean-forward="false" selection-start-line="157" selection-start-column="52" selection-end-line="157" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#contains#0;class#KdTree#0" expanded="false" />
-            <element signature="e#2093#2094#0" expanded="true" />
-            <element signature="e#2150#2151#0" expanded="true" />
             <element signature="e#3377#3386#0" expanded="true" />
-            <element signature="e#4137#4138#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -829,11 +772,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
           <caret line="66" column="49" lean-forward="true" selection-start-line="66" selection-start-column="49" selection-end-line="66" selection-end-column="49" />
-          <folding>
-            <element signature="e#1337#1346#0" expanded="true" />
-            <marker date="1506799498394" expanded="true" signature="1930:4889" ph="{...}" />
-            <marker date="1506799498394" expanded="true" signature="2766:4883" ph="//..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -879,10 +818,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/s3/RangeSearchVisualizer.java">
+    <entry file="file://$PROJECT_DIR$/src/s3/KdTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="29" column="39" lean-forward="false" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
+        <state relative-caret-position="680">
+          <caret line="145" column="18" lean-forward="false" selection-start-line="145" selection-start-column="18" selection-end-line="145" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3377#3386#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/s3/RectHV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="49" column="41" lean-forward="false" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/s3/KdTreeVisualizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="19" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -891,79 +851,50 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/../../algs4.jar!/edu/princeton/cs/algs4/StdRandom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="16">
           <caret line="119" column="22" lean-forward="false" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/s3/KdTreeVisualizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="19" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/../../algs4.jar!/edu/princeton/cs/algs4/StdDraw.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="73">
           <caret line="1826" column="26" lean-forward="false" selection-start-line="1826" selection-start-column="26" selection-end-line="1826" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/../../algs4.jar!/edu/princeton/cs/algs4/Point2D.java">
+    <entry file="file://$PROJECT_DIR$/src/s3/NearestNeighborVisualizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="30" column="19" lean-forward="false" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+        <state relative-caret-position="1241">
+          <caret line="136" column="18" lean-forward="false" selection-start-line="136" selection-start-column="18" selection-end-line="136" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/s3/PointSET.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="67" column="51" lean-forward="false" selection-start-line="67" selection-start-column="51" selection-end-line="67" selection-end-column="51" />
-          <folding>
-            <element signature="e#1337#1346#0" expanded="true" />
-            <marker date="1506799498394" expanded="true" signature="1930:4889" ph="{...}" />
-            <marker date="1506799498394" expanded="true" signature="2766:4883" ph="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/s3/RectHV.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/s3/NearestNeighborVisualizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="119" column="70" lean-forward="false" selection-start-line="119" selection-start-column="70" selection-end-line="119" selection-end-column="70" />
+        <state relative-caret-position="368">
+          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="100" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/s3/KdTree.java">
+    <entry file="jar://$PROJECT_DIR$/../../algs4.jar!/edu/princeton/cs/algs4/Point2D.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="143" column="39" lean-forward="false" selection-start-line="143" selection-start-column="39" selection-end-line="143" selection-end-column="39" />
+        <state relative-caret-position="16">
+          <caret line="114" column="27" lean-forward="false" selection-start-line="114" selection-start-column="27" selection-end-line="114" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/s3/RangeSearchVisualizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="29" column="39" lean-forward="false" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#contains#0;class#KdTree#0" expanded="false" />
-            <element signature="e#2093#2094#0" expanded="true" />
-            <element signature="e#2150#2151#0" expanded="true" />
-            <element signature="e#3377#3386#0" expanded="true" />
-            <element signature="e#4137#4138#0" expanded="true" />
           </folding>
         </state>
       </provider>
