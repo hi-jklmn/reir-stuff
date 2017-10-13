@@ -65,9 +65,6 @@ public class SAP {
             if (depth > limit) {
                 return candidate;
             }
-            if (other[v] > 0) {
-                candidate = v;
-            }
             for (Integer vertex : G.adj(v)) {
                 if (mine[vertex] == 0 || mine[vertex] > depth) {
                     mine[vertex] = depth;
@@ -96,17 +93,22 @@ public class SAP {
             lenv[vertex] = OFFSET;
             queuev.enqueue(vertex);
         }
+        int candidate = -1;
         for (Integer vertex : B) {
+            if (lenv[vertex] > 0) {
+                candidate = Math.max(candidate, vertex);
+            }
             lenw[vertex] = OFFSET;
             queuew.enqueue(vertex);
         }
-        int limit = Integer.MAX_VALUE;
-        int candidate = -1;
-        while (!queuev.isEmpty() || !queuew.isEmpty()) {
-            candidate = bfs(candidate, limit, queuev, lenv, lenw);
-            candidate = bfs(candidate, limit, queuew, lenw, lenv);
-            if (candidate != -1) {
-                limit = Math.min(limit, lenw[candidate] + lenv[candidate] - OFFSET);
+        if (candidate == -1) {
+            int limit = Integer.MAX_VALUE;
+            while (!queuev.isEmpty() || !queuew.isEmpty()) {
+                candidate = bfs(candidate, limit, queuev, lenv, lenw);
+                candidate = bfs(candidate, limit, queuew, lenw, lenv);
+                if (candidate != -1) {
+                    limit = Math.min(limit, lenw[candidate] + lenv[candidate] - OFFSET);
+                }
             }
         }
         if (ancestor || candidate == -1) {
