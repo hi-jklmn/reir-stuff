@@ -58,8 +58,7 @@ public class SAP {
         return iterbfs(ancestor, va, wa);
     }
 
-    private int bfs(int limit, Queue<Integer> queue, int[] mine, int[] other) {
-        int candidate = -1;
+    private int bfs(int candidate, int limit, Queue<Integer> queue, int[] mine, int[] other) {
         if (!queue.isEmpty()) {
             int v = queue.dequeue();
             int depth = mine[v] + 1;
@@ -104,18 +103,17 @@ public class SAP {
         int limit = Integer.MAX_VALUE;
         int candidate = -1;
         while (!queuev.isEmpty() || !queuew.isEmpty()) {
-            int dv = bfs(limit, queuev, lenv, lenw);
-            int dw = bfs(limit, queuew, lenw, lenv);
-            candidate = Math.max(candidate, Math.max(dv, dw));
+            candidate = bfs(candidate, limit, queuev, lenv, lenw);
+            candidate = bfs(candidate, limit, queuew, lenw, lenv);
             if (candidate != -1) {
-                if (!ancestor) {
-                    return lenw[candidate] + lenv[candidate] - 2 * OFFSET;
-                } else {
-                    limit = Math.min(limit, lenw[candidate] + lenv[candidate] - OFFSET);
-                }
+                limit = Math.min(limit, lenw[candidate] + lenv[candidate] - OFFSET);
             }
         }
-        return candidate;
+        if (ancestor || candidate == -1) {
+            return candidate;
+        } else {
+            return lenv[candidate] + lenw[candidate] - 2 * OFFSET;
+        }
     }
 
     // do unit testing of this class
@@ -137,18 +135,18 @@ public class SAP {
         out.println("}");
         SAP sap = new SAP(G);
 
-        out = new Out();
+        out = new Out("results.txt");
         StdRandom.setSeed(198237);
 
         for (int i = 0; i < G.V(); i += 1) {
-            for (int j = i; j < G.V(); j += 1) {
-                out.print("i: ");
+            for (int j = 0; j < G.V(); j += 1) {
+                out.print("ancestor(");
                 out.print(i);
-                out.print(",\t j: ");
+                out.print(", ");
                 out.print(j);
-                out.print(",\t a: ");
+                out.print(")=");
                 out.print(sap.ancestor(i, j));
-                out.print(",\t l: ");
+                out.print(" len=");
                 out.println(sap.length(i, j));
             }
             //StdOut.println(i);
