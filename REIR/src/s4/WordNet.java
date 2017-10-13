@@ -10,26 +10,32 @@ import java.io.File;
 public class WordNet {
 
     SAP hypernyms;
-    LinearProbingHashST<String, Integer> synsets = new LinearProbingHashST<>();
+    String[] synsets_itos;
+    LinearProbingHashST<String, Integer> synsets_stoi = new LinearProbingHashST<>();
 
     // constructor takes the name of the two input files
     public WordNet(String synsets, String hypernyms) {
-        In in = new In(synsets);
 
+        Bag<String> synset_read = new Bag<>();
         int S = 0;
+        In in = new In(synsets);
 
         while(in.hasNextLine()) {
             S++;
-            String[] curr = in.readLine().split(",");
-            String[] syns = curr[1].split(" ");
+            synset_read.add(in.readLine());
+        }
 
-            for(int i = 0; i < syns.length; i++) {
-                this.synsets.put(syns[i], Integer.valueOf(curr[0]));
+        synsets_itos = new String[S];
+
+        for(String s : synset_read) {
+            String[] curr = s.split(",");
+            synsets_itos[Integer.valueOf(curr[0])] = curr[1];
+            for(String syn : curr[1].split(" ")) {
+                synsets_stoi.put(syn, Integer.valueOf(curr[0]));
             }
         }
 
         Digraph G = new Digraph(S);
-
         in = new In(hypernyms);
 
         while(in.hasNextLine()) {
@@ -47,12 +53,12 @@ public class WordNet {
 
     // returns all WordNet nouns
     public Iterable<String> nouns() {
-        return new Bag<String>();
+        return synsets_stoi.keys();
     }
 
     // is the word a WordNet noun?
     public boolean isNoun(String word) {
-        return false;
+        return synsets_stoi.contains(word);
     }
 
     // distance between nounA and nounB (defined below)
