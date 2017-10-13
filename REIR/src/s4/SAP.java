@@ -1,7 +1,6 @@
 package s4;
 
 import edu.princeton.cs.algs4.*;
-import org.omg.CORBA.MARSHAL;
 
 public class SAP {
     private final Digraph G;
@@ -75,9 +74,8 @@ public class SAP {
                         } else if (mine[candidate] + other[candidate] == mine[vertex] + other[vertex]) {
                             candidate = Math.max(candidate, vertex);
                         }
-                    } else {
-                        queue.enqueue(vertex);
                     }
+                    queue.enqueue(vertex);
                 }
             }
         }

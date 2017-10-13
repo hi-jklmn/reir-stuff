@@ -2,8 +2,6 @@ package s4;
 
 import edu.princeton.cs.algs4.*;
 
-import java.io.File;
-
 public class WordNet {
 
     private SAP hypernyms;
@@ -66,13 +64,21 @@ public class WordNet {
 
     // distance between nounA and nounB (defined below)
     public int distance(String nounA, String nounB) {
-        return hypernyms.length(synsets_stoi.get(nounA), synsets_stoi.get(nounB));
+        if (isNoun(nounA) && isNoun(nounB)) {
+            return hypernyms.length(synsets_stoi.get(nounA), synsets_stoi.get(nounB));
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     // a synset (second field of synsets.txt) that is a shortest common ancestor
 // of nounA and nounB
     public String sap(String nounA, String nounB) {
-        return synsets_itos[hypernyms.ancestor(synsets_stoi.get(nounA), synsets_stoi.get(nounB))];
+        if (isNoun(nounA) && isNoun(nounB)) {
+            return synsets_itos[hypernyms.ancestor(synsets_stoi.get(nounA), synsets_stoi.get(nounB))];
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     // do unit testing of this class
@@ -86,33 +92,58 @@ public class WordNet {
         WordNet wn = new WordNet(in.readLine(), in.readLine());
         Out out = new Out("wordnet.dot");
 //        Out out = new Out();
-        out.println("digraph wordnet {\n\tnode[shape=box]");
-        for (int i = 0; i < wn.synsets_itos.length; i++) {
-            out.println("\t" + Integer.toString(i) + "[label = \"" + wn.synsets_itos[i] + "\"]");
+        if (false) {
+            out.println("digraph wordnet {\n\tnode[shape=box]");
+            for (int i = 0; i < wn.synsets_itos.length; i++) {
+                out.println("\t" + Integer.toString(i) + "[label = \"" + wn.synsets_itos[i] + "\"]");
+            }
+            for (int v = 0; v < wn.G.V(); v++) {
+                for (int w : wn.G.adj(v)) {
+                    out.print(String.format("\t%d", v));
+                    out.print(String.format(" -> %d;\n", w));
+                }
+            }
+            out.println("}");
         }
-        for (int v = 0; v < wn.G.V(); v++) {
-            for (int w : wn.G.adj(v)) {
-                out.print(String.format("\t%d", v));
-                out.print(String.format(" -> %d;\n", w));
+        int queries = Integer.valueOf(in.readLine());
+        Queue<String> queue = new Queue<>();
+        for (int i = 0; i < queries; i++) {
+            queue.enqueue(in.readLine());
+        }
+        out = new Out();
+        //out.println(bag);
+        //out = new Out("results.txt");
+        for (String a : queue) {
+            for (String b : queue) {
+//        String a = "science";
+//        String b = "Christmas";
+                try {
+                    String ancestor = wn.sap(a, b);
+                    int dist = wn.distance(a, b);
+                    out.print("sap(");
+                    out.print(a);
+                    out.print(", ");
+                    out.print(b);
+                    out.print(")='");
+                    out.print(ancestor);
+                    out.print("' len=");
+                    out.println(dist);
+                } catch (IllegalArgumentException e) {
+                }
             }
         }
-        out.println("}");
-
-//        out = new Out();
-        out = new Out("results.txt");
-
-        for (int i = 0; i < wn.synsets_itos.length; i += 1) {
-            for (int j = 0; j < wn.synsets_itos.length; j += 1) {
-                out.print("sap(");
-                out.print(wn.synsets_itos[i]);
-                out.print(", ");
-                out.print(wn.synsets_itos[j]);
-                out.print(")='");
-                out.print(wn.synsets_itos[wn.hypernyms.ancestor(i, j)]);
-                out.print("' len=");
-                out.println(wn.hypernyms.length(i, j));
-            }
-            //StdOut.println(i);
-        }
+//        for (int i = 0; i < wn.synsets_itos.length; i += 1) {
+//            for (int j = 0; j < wn.synsets_itos.length; j += 1) {
+//                out.print("sap(");
+//                out.print(wn.synsets_itos[i]);
+//                out.print(", ");
+//                out.print(wn.synsets_itos[j]);
+//                out.print(")='");
+//                out.print(wn.synsets_itos[wn.hypernyms.ancestor(i, j)]);
+//                out.print("' len=");
+//                out.println(wn.hypernyms.length(i, j));
+//            }
+//            //StdOut.println(i);
+//        }
     }
 }
